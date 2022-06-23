@@ -1,0 +1,71 @@
+<app-header></app-header>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-0 col-md-3 col-lg-3"></div>
+    <div class="col-sm-12 col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Datos del usuario</h5>
+          <hr>
+          <p class="card-text">Nombre: {{nombre}}</p>
+          <p class="card-text">Email: {{email}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-0 col-md-3 col-lg-3"></div>
+  </div>
+</div>
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-0 col-md-3 col-lg-3"></div>
+    <div class="col-sm-12 col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Carga de CV</h5>
+          <hr>
+          <form novalidate [formGroup]="cvForm" (ngSubmit)="submitCV()">
+            <input type="file" (change)="onFileSelected($event)" formControlName="curriculum" id="curriculum" class=""
+              name="curriculum" placeholder="Curriculum" accept="application/pdf">
+            <input type="submit" class="" value="Subir CV">
+            <label>{{load}}</label>
+            <div class="container">
+              <div class="alert alert-success" role="success" *ngIf="successStatus">
+                {{msg}}
+              </div>
+            </div>
+            <div class="container">
+              <div class="alert alert-danger" role="danger" *ngIf="errorStatus">
+                {{msgError}}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-0 col-md-3 col-lg-3"></div>
+  </div>
+</div>
+
+<br>
+<div class="container" *ngIf="findCV">
+  <div class="row">
+    <div class="col-sm-0 col-md-3 col-lg-3"></div>
+    <div class="col-sm-12 col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Descarga de CV</h5>
+          <hr>
+          <a href="{{url_download_cv}}" class="btn btn-primary">Descargar CV</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-0 col-md-3 col-lg-3"></div>
+  </div>
+</div>
+
+<app-footer></app-footer>
